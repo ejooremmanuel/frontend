@@ -1,5 +1,5 @@
 const config = {
-  WS_BASE_URL: "https://sparklegenius.herokuapp.com/api",
+  WS_BASE_URL: "http://localhost:8080/api",
   DOMAIN_NAME: "http://localhost:3000",
   DEMO: true,
 };

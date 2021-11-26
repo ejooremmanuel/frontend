@@ -46,7 +46,7 @@ const Login = (props) => {
     if (data.ok) {
       console.log("login success", data);
       setError("");
-      localStorage.setItem("token", data.accesstoken);
+      localStorage.setItem("token", data.accessToken);
       localStorage.setItem("user", JSON.stringify(data.user));
       props.history.push("/");
     } else {

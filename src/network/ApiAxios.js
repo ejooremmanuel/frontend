@@ -13,6 +13,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(async (config) => {
   const token = localStorage.getItem("token");
+  console.log(token);
   config.headers.Authorization = token ? token : "";
   config.headers.ContentType = "application/json";
   return config;
@@ -46,4 +47,4 @@ export const logout = async (token) =>
   await instance.post("users/logout", { token });
 
 export const edit = async (userID, name, email) =>
-  await instance.post("/users/edit", { userID, name, email });
+  await instance.post("user/profile", { userID, name, email });
