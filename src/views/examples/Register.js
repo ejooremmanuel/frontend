@@ -35,8 +35,10 @@ import {
 import Toast from "react-bootstrap/Toast";
 import { register } from "../../network/ApiAxios";
 import config from "../../config";
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
+  const history = useHistory();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -63,14 +65,15 @@ const Register = () => {
     }
     const response = await register(name, email, password);
     const { data } = response;
+
     if (!data.ok) {
       setError(data.response.error);
       return;
+    } else {
+      history.push("/auth/login");
     }
     if (config.DEMO) {
-      setToastMessage(
-        "This is a demo, so we will not send you an email. Instead, click on this link to verify your account:"
-      );
+      setToastMessage("Registration Successful");
       setUserID(data.userID);
     }
     setError("");
